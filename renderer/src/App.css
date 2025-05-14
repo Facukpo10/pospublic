@@ -1,0 +1,54 @@
+
+
+/* Estilo para la sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: #f8f9fa;
+  transition: width 0.3s;
+  overflow-x: hidden;
+}
+
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  display: block;
+}
+
+.sidebar a:hover {
+  background-color: #ddd;
+  color: #000;
+}
+
+/* Estilo para el contenido principal */
+.content {
+  padding: 20px;
+  transition: margin-left 0.3s;
+}
+
+/* Estilo para cuando la sidebar está cerrada */
+.closed {
+  display: none;
+}
+.sidebar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: #343a40;
+  z-index: 1040;
+}
+.fullscreen-login {
+  position: relative;
+  z-index: 2000; /* mayor que la sidebar */
+}
+backgroundStyle = {
+  background: "radial-gradient(circle, #ffffff 0%, #e0e0e0 100%)",
+  backgroundImage: "url('data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='25' cy='25' r='1' fill='%23e0e0e0' opacity='0.5'/><circle cx='75' cy='75' r='1' fill='%23e0e0e0' opacity='0.5'/></svg>')",
+  backgroundSize: "30px 30px"
+};

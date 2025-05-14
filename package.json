@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "git-filter-repo": "^0.0.30",
+    "nodemon": "^3.1.9",
+    "sqlite3": "^5.1.7"
+  },
+  "name": "pf3",
+  "version": "1.0.0",
+  "main": "electron/main.js",
+  "scripts": {
+    "react": "cd renderer && npm run dev",
+    "server": "node main/server.js",
+    "electron": "wait-on http://localhost:5173 && electron .",
+    "start": "concurrently \"npm run server\" \"npm run react\" \"npm run electron\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon main/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "electron": "^35.1.5",
+    "wait-on": "^8.0.3"
+  },
+  "description": ""
+}
