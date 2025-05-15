@@ -115,17 +115,33 @@ function Control() {
 
     }
 
-    function EditarEmpleado(id){
-        console.log('Edicion del empleado', id)
+    function editarEmpleado(row) {
+        console.log('Edicion del empleado', row.id)
+        axios.put(`http://localhost:3001/usuario/${row.id}`,
+            {
+                nombre: nombre,
+                DNI: dni,
+                password: password,
+                id_rol: rol
+            }
+        ).then((res)=>{
+            console.log(res)
+            getUsuario()
+            mostrarToast("Usuario editado correctamente")
+            cerrarModalEditarEmpleado()
+        }).catch((err) => {
+            console.log(err)
+            mostrarToast("ERROR:usuario no editado","danger")
+        })
     }
 
-    function setearEmpleado (id){
+    function setearEmpleado(id) {
         setNombre(id.nombre)
         setDNI(id.DNI)
         setPassword(id.password)
         setRol(id.id_rol)
-        console.log(nombre,dni,password,rol)
-        abritModalEditarEmpleado()
+        console.log(nombre, dni, password, rol)
+        abritModalEditarEmpleado(id)
     }
 
     return (
@@ -133,14 +149,14 @@ function Control() {
             <h1>Control Usuario</h1>
             <Button className='m-2' onClick={abritModalEmpleado}>Crear Usuario</Button>
 
-            <div id='Tabla-usuario'className="m-2">
-                <Tabla  data={filteredUsuarios} onDelete={deleteUsuario} onEdit={setearEmpleado}/>
+            <div id='Tabla-usuario' className="m-2">
+                <Tabla data={filteredUsuarios} onDelete={deleteUsuario} onEdit={setearEmpleado} />
             </div>
-           
+
 
             <Modal show={modalEditarEmpleado} onHide={cerrarModalEditarEmpleado} centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Agregar Empleado</Modal.Title>
+                    <Modal.Title>Editar Empleado</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
@@ -178,7 +194,7 @@ function Control() {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='secondary' onClick={cerrarModalEditarEmpleado}>Cancelar</Button>
-                    <Button variant='success' onClick={EditarEmpleado}>Crear</Button>
+                    <Button variant='success' onClick={editarEmpleado}>Editar</Button>
                 </Modal.Footer>
             </Modal>
 
