@@ -27,6 +27,7 @@ function Control() {
     const abritModalEditarEmpleado = () => setEditarEmpleado(true);
 
     //variables form USuarios
+    const [id, setId] = useState("")
     const [nombre, setNombre] = useState("")
     const [dni, setDNI] = useState("")
     const [password, setPassword] = useState("")
@@ -115,9 +116,8 @@ function Control() {
 
     }
 
-    function editarEmpleado(row) {
-        console.log('Edicion del empleado', row.id)
-        axios.put(`http://localhost:3001/usuario/${row.id}`,
+    function editarEmpleado() {
+        axios.put(`http://localhost:3001/usuario/${id}`,
             {
                 nombre: nombre,
                 DNI: dni,
@@ -136,12 +136,12 @@ function Control() {
     }
 
     function setearEmpleado(id) {
+        setId(id.id)
         setNombre(id.nombre)
         setDNI(id.DNI)
         setPassword(id.password)
         setRol(id.id_rol)
-        console.log(nombre, dni, password, rol)
-        abritModalEditarEmpleado(id)
+        abritModalEditarEmpleado()
     }
 
     return (
